@@ -1,0 +1,24 @@
+# Simulated user account database
+user_accounts = {
+    'user1': {'balance': 1000},
+    'user2': {'balance': 1500}
+}
+
+# Function to check account balance
+def check_balance(username):
+    if username in user_accounts:
+        return user_accounts[username]['balance']
+    else:
+        return None
+
+# Function to make a payment
+def make_payment(sender, receiver, amount):
+    if sender in user_accounts and receiver in user_accounts:
+        if user_accounts[sender]['balance'] >= amount:
+            user_accounts[sender]['balance'] -= amount
+            user_accounts[receiver]['balance'] += amount
+            return True
+        else:
+            return False
+    else:
+        return False
